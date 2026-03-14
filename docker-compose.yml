@@ -36,10 +36,10 @@ services:
     networks:
       - laravel
     volumes:
-      - dbdata:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
 networks:
   laravel:
 
 volumes:
-  dbdata:
+  mysql_data:
