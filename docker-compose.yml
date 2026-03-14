@@ -12,17 +12,19 @@ services:
       - laravel
 
   nginx:
-    image: nginx:latest
-    container_name: laravel_nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./:/var/www
-      - ./docker/nginx:/etc/nginx/conf.d
-    depends_on:
-      - app
-    networks:
-      - laravel
+  image: nginx:latest
+  container_name: laravel_nginx
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./:/var/www
+    - ./docker/nginx:/etc/nginx/conf.d
+    - /etc/letsencrypt:/etc/letsencrypt
+  depends_on:
+    - app
+  networks:
+    - laravel
 
   mysql:
     image: mysql:8
