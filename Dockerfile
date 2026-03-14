@@ -1,5 +1,6 @@
 FROM php:8.2-fpm
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -9,8 +10,10 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip
 
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
+# Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
