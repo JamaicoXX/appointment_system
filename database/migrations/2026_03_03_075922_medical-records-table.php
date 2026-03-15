@@ -29,6 +29,7 @@ return new class extends Migration
             // Can store JSON array of file paths
             $table->json('attachments')->nullable();
             $table->date('follow_up_date')->nullable();
+            $table->boolean('archived')->default(false);
             $table->timestamps();
 
             // Indexes

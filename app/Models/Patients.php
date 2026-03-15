@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Appointments;
 use App\Models\User;
 
@@ -16,8 +17,8 @@ class Patients extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function appointments()
-    // {
-    //     return $this->hasMany(Appointments::class);
-    // }
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointments::class, 'patient_id');
+    }
 }

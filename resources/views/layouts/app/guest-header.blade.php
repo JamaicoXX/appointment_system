@@ -8,6 +8,10 @@
 <body
     class="min-h-screen bg-gradient-to-br from-sky-50 via-white to-teal-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
 
+    {{-- Modals --}}
+    <livewire:guest.modals.add-appointment-modal wire:key="add-appointment-modal-guest" />
+    <livewire:guest.modals.create-appointment-alert-modal wire:key="appointment-alert-modal" />
+
     <!-- Header -->
     <flux:header container
         class="border-b border-sky-100 bg-white/90 backdrop-blur-md shadow-sm dark:border-slate-800 dark:bg-slate-900/90">
@@ -21,7 +25,7 @@
 
             <!-- Features -->
             <flux:navbar.item icon="sparkles" href="#features" class="text-sky-700 hover:text-sky-900 font-medium">
-                Features
+                Services
             </flux:navbar.item>
 
             <!-- About -->
@@ -34,11 +38,24 @@
                 Contact
             </flux:navbar.item>
 
-            <!-- CTA Button -->
+            {{-- <!-- CTA Button -->
             <a href="{{ route('login') }}"
                 class="flex items-center gap-2 ml-3 text-[14px] bg-sky-500 text-white px-4 py-2 rounded-xl shadow-md hover:bg-sky-700 transition">
                 <flux:icon name="plus" class="size-4 font-bold" />
                 Book Appointment
+            </a> --}}
+
+            <flux:modal.trigger name="add-appointment-modal">
+                <div
+                    class="flex items-center gap-2 ml-3 text-[14px] bg-sky-500 text-white px-4 py-2 rounded-xl shadow-md hover:bg-sky-700 transition cursor-pointer">
+                    <flux:icon name="plus" class="size-4 font-bold" />
+                    Book Appointment
+                </div>
+            </flux:modal.trigger>
+
+            <a href="{{ route('login') }}"
+                class="flex items-center gap-2 ml-3 text-[14px] bg-gray-500 text-white px-4 py-2 rounded-xl shadow-md hover:bg-gray-700 transition">
+                Login
             </a>
 
         </flux:navbar>
@@ -47,8 +64,7 @@
     <div class="bg-gradient-to-br from-sky-100 via-sky-50 to-teal-100">
 
         <!-- Hero Section -->
-        <section
-            class="py-20 px-6 text-center relative overflow-hidden">
+        <section class="py-20 px-6 text-center relative overflow-hidden">
             <h1 class="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white leading-tight">
                 Modern Dental Care <br>
                 <span class="text-sky-600">Made Simple</span>
@@ -60,10 +76,12 @@
             </p>
 
             <div class="mt-8 flex justify-center gap-4">
-                <a href="{{ route('login') }}"
-                    class="bg-sky-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-sky-700 transition font-semibold">
-                    Schedule Now
-                </a>
+                <flux:modal.trigger name="add-appointment-modal">
+                    <div
+                        class="bg-sky-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-sky-700 transition font-semibold cursor-pointer">
+                        Schedule Now
+                    </div>
+                </flux:modal.trigger>
 
                 <a href="#features"
                     class="border border-sky-300 text-sky-700 px-6 py-3 rounded-xl hover:bg-sky-50 transition font-medium">
@@ -109,10 +127,43 @@
             </div>
         </section>
 
+        <section id="location" class="py-16 px-6 bg-sky-50">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">Our Location</h2>
+                <p class="text-lg text-slate-700 mb-6">
+                    Orthodontics Dental Clinic<br>
+                    Road 2, Brgy Bagong Pag-asa, Quezon City
+                </p>
+                <div class="mx-auto max-w-3xl">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.123456789!2d121.0356!3d14.6543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b1c123456789%3A0xabcdef123456789!2sOrthodontics%20Dental%20Clinic!5e0!3m2!1sen!2sph!4v1681234567890!5m2!1sen!2sph"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        {{-- <section id="location" class="py-16 px-6 bg-sky-50">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">Our Location</h2>
+                <p class="text-lg text-slate-700 mb-6">
+                    Orthodontics Dental Clinic<br>
+                    Road 2, Brgy Bagong Pag-asa, Quezon City
+                </p>
+                <a href="https://maps.app.goo.gl/J5cc4cpVDsGNjBYU8" target="_blank"
+                    class="inline-block px-6 py-3 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition">
+                    View on Google Maps
+                </a>
+            </div>
+        </section> --}}
+
     </div>
 
     <!-- Soft Footer -->
     <footer class="py-8 text-center text-slate-500 text-sm border-t border-sky-100 bg-white">
+        Orthodontics Dental Clinic | Road 2, Brgy Bagong Pag-asa, Quezon City
+        <br>
         © {{ date('Y') }} Appointment System. All rights reserved.
     </footer>
 

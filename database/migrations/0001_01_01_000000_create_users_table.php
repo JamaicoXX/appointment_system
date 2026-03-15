@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('role', ['patient', 'doctor', 'admin'])->default('patient');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('password');
+            $table->boolean('archived')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

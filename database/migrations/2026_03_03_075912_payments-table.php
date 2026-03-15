@@ -22,13 +22,15 @@ return new class extends Migration
 
             $table->enum('payment_method', ['gcash'])->default('gcash');
 
+            $table->string('gcash_number')->nullable();
             $table->string('gcash_reference_number')->nullable();
             $table->string('receipt_image')->nullable();
 
             $table->enum('payment_status', [
                 'pending',
                 'approved',
-                'rejected'
+                'rejected',
+                'declined'
             ])->default('pending');
 
             $table->foreignId('reviewed_by')
@@ -37,6 +39,8 @@ return new class extends Migration
                   ->nullOnDelete();
 
             $table->timestamp('reviewed_at')->nullable();
+
+            $table->boolean('archived')->default(false);
 
             $table->timestamps();
         });

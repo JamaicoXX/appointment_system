@@ -1,5 +1,5 @@
 <x-layouts::user-layout :title="__('Dashboard')">
     <div>
-        Test User
+        <livewire:guest.appointments.appointments-view />
     </div>
 </x-layouts::user-layout>

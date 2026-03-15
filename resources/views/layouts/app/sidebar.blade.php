@@ -36,8 +36,11 @@
                        transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('appointments') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
                 wire:navigate>
                 <div class="flex items-center gap-3">
-                    <flux:icon name="calendar-date-range" variant="solid" class="size-6 {{ request()->routeIs('appointments') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
-                    <p class="text-[15px] {{ request()->routeIs('appointments') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">Appointments</p>
+                    <flux:icon name="calendar-date-range" variant="solid"
+                        class="size-6 {{ request()->routeIs('appointments') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('appointments') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Appointments</p>
                 </div>
             </div>
             <div icon="presentation-chart-line" href="{{ route('medical-records') }}"
@@ -45,8 +48,11 @@
                        transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('medical-records') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
                 wire:navigate>
                 <div class="flex items-center gap-3">
-                    <flux:icon name="clipboard-document-list" variant="solid" class="size-6 {{ request()->routeIs('medical-records') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
-                    <p class="text-[15px] {{ request()->routeIs('medical-records') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">Medical Records</p>
+                    <flux:icon name="clipboard-document-list" variant="solid"
+                        class="size-6 {{ request()->routeIs('medical-records') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('medical-records') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Medical Records</p>
                 </div>
             </div>
             <div icon="presentation-chart-line" href="{{ route('patient-info') }}"
@@ -54,8 +60,11 @@
                        transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('patient-info') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
                 wire:navigate>
                 <div class="flex items-center gap-3">
-                    <flux:icon name="users" variant="solid" class="size-6 {{ request()->routeIs('patient-info') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
-                    <p class="text-[15px] {{ request()->routeIs('patient-info') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">Patient Info</p>
+                    <flux:icon name="users" variant="solid"
+                        class="size-6 {{ request()->routeIs('patient-info') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('patient-info') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Patient Info</p>
                 </div>
             </div>
             <div icon="presentation-chart-line" href="{{ route('transactions') }}"
@@ -63,8 +72,35 @@
                        transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('transactions') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
                 wire:navigate>
                 <div class="flex items-center gap-3">
-                    <flux:icon name="banknotes" variant="solid" class="size-6 {{ request()->routeIs('transactions') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
-                    <p class="text-[15px] {{ request()->routeIs('transactions') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">Transactions</p>
+                    <flux:icon name="banknotes" variant="solid"
+                        class="size-6 {{ request()->routeIs('transactions') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('transactions') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Transactions</p>
+                </div>
+            </div>
+            <div icon="clock" href="{{ route('business-day-editor') }}"
+                class="cursor-pointer w-full flex items-center rounded-xl
+                       transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('business-day-editor') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
+                wire:navigate>
+                <div class="flex items-center gap-3">
+                    <flux:icon name="clock" variant="solid"
+                        class="size-6 {{ request()->routeIs('business-day-editor') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('business-day-editor') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Business Days Editor</p>
+                </div>
+            </div>
+            <div icon="beaker" href="{{ route('services') }}"
+                class="cursor-pointer w-full flex items-center rounded-xl
+                       transition-transform duration-150 ease-in-out transform hover:scale-103 px-3 py-2 {{ request()->routeIs('services') ? 'bg-sky-600' : 'hover:bg-sky-200 dark:hover:bg-gray-600' }}"
+                wire:navigate>
+                <div class="flex items-center gap-3">
+                    <flux:icon name="beaker" variant="solid"
+                        class="size-6 {{ request()->routeIs('services') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}" />
+                    <p
+                        class="text-[15px] {{ request()->routeIs('services') ? 'text-white dark:text-white' : 'text-black dark:text-white' }}">
+                        Services</p>
                 </div>
             </div>
         </div>
@@ -115,17 +151,16 @@
 
         <flux:spacer />
 
-        <flux:sidebar.nav>
+        {{-- <flux:sidebar.nav>
             <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit"
                 target="_blank">
                 {{ __('Payment Method') }}
             </flux:sidebar.item>
 
-            <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire"
-                target="_blank">
+            <flux:sidebar.item icon="book-open-text" href="{{ route('business-day-editor') }}">
                 {{ __('Business Days Editor') }}
             </flux:sidebar.item>
-        </flux:sidebar.nav>
+        </flux:sidebar.nav> --}}
 
         <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
     </flux:sidebar>

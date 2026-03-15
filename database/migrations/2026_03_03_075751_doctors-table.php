@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('specialization');
             $table->text('bio')->nullable();
             $table->string('profile_photo')->nullable();
-
+            $table->boolean('archived')->default(false);
             $table->timestamps(); // created_at & updated_at
         });
     }

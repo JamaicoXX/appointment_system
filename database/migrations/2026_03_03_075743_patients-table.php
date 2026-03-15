@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')
+                  ->nullable()
                   ->constrained('users')
                   ->onDelete('cascade');
 
@@ -24,10 +25,11 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('gender', 20);
             $table->string('contact_number')->nullable();
+            $table->string('email');
             $table->text('address')->nullable();
             $table->string('emergency_contact_name')->nullable();
             $table->string('emergency_contact_number')->nullable();
-
+            $table->boolean('archived')->default(false);
             $table->timestamps(); // created_at & updated_at
         });
     }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 use App\Models\User;
@@ -14,6 +15,7 @@ use App\Models\Appointments;
 use App\Models\Payments;
 use App\Models\MedicalRecords;
 use App\Models\DoctorSchedule;
+use App\Models\Services;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -66,6 +68,7 @@ class DatabaseSeeder extends Seeder
                 'birthdate' => fake()->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),
                 'gender' => fake()->randomElement(['Male', 'Female']),
                 'contact_number' => '09' . fake()->numberBetween(100000000, 999999999),
+                'email' => fake()->unique()->safeEmail(),
                 'address' => fake()->address(),
                 'emergency_contact_name' => fake()->name(),
                 'emergency_contact_number' => '09' . fake()->numberBetween(100000000, 999999999),
@@ -88,13 +91,13 @@ class DatabaseSeeder extends Seeder
         // --------------------------------------------------
         // 4. Doctor Weekly Schedule (Mon–Fri)
         // --------------------------------------------------
-        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         foreach ($days as $day) {
             DoctorSchedule::create([
                 'day_of_week' => $day,
-                'start_time' => '09:00:00',
-                'end_time' => '17:00:00',
+                'start_time' => '08:00:00',
+                'end_time' => '20:00:00',
                 'slot_limit' => 5,
                 'is_active' => true,
             ]);
@@ -123,6 +126,7 @@ class DatabaseSeeder extends Seeder
                 'amount' => 500.00,
                 'payment_method' => 'gcash',
                 'gcash_reference_number' => strtoupper(Str::random(10)),
+                'gcash_number' => '09' . fake()->numberBetween(100000000, 999999999),
                 'receipt_image' => null,
                 'payment_status' => 'approved',
                 'reviewed_by' => $admin->id,
@@ -141,5 +145,78 @@ class DatabaseSeeder extends Seeder
                 'follow_up_date' => Carbon::now()->addWeeks(2),
             ]);
         }
+
+        DB::table('services')->insert([
+            [
+                'name' => 'Tooth Extraction',
+                'description' => 'Removal of damaged or decayed tooth',
+                'price' => 2500,
+                'discount_price' => 2200,
+                'duration' => 60,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dental Filling',
+                'description' => 'Restoration of tooth damaged by decay',
+                'price' => 2000,
+                'discount_price' => 1800,
+                'duration' => 45,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Lazer (Peeling)',
+                'description' => 'Laser dental peeling treatment',
+                'price' => 3000,
+                'discount_price' => 2700,
+                'duration' => 60,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Denture (US Plastic)',
+                'description' => 'Plastic denture replacement',
+                'price' => 8000,
+                'discount_price' => 7500,
+                'duration' => 120,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Flexible Denture',
+                'description' => 'Flexible removable denture',
+                'price' => 10000,
+                'discount_price' => 9500,
+                'duration' => 120,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Braces',
+                'description' => 'Orthodontic braces treatment',
+                'price' => 50000,
+                'discount_price' => 45000,
+                'duration' => 90,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dental Cleaning',
+                'description' => 'Removal of plaque and tartar',
+                'price' => 1500,
+                'discount_price' => 1200,
+                'duration' => 30,
+                'archived' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }

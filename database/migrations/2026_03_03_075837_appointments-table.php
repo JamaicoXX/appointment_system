@@ -31,12 +31,17 @@ return new class extends Migration
 
             $table->enum('payment_status', [
                 'unpaid',
-                'pending_review',
+                'for review',
                 'paid',
-                'rejected'
-            ])->default('unpaid');
+                'rejected',
+                'declined'
+            ])->default('for review');
+
+            $table->json('services_availed')->nullable();
 
             $table->text('notes')->nullable();
+
+            $table->boolean('archived')->default(false);
 
             $table->timestamps();
 
